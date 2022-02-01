@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.DataStore.SqlServer", "Chinook.DataStore.SqlServer\Chinook.DataStore.SqlServer.csproj", "{CA137DE8-6686-4D84-9432-2EFFF4A12CAD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.WebApi", "Chinook.WebApi\Chinook.WebApi.csproj", "{FFACBA3A-CA0D-4F54-B75A-CD7ECCE2D424}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.Service", "Chinook.Service\Chinook.Service.csproj", "{EC692297-2BB0-405B-84A1-C9F7DA0849A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chinook.Service.Tests", "Chinook.Service.Tests\Chinook.Service.Tests.csproj", "{3AC09C1F-8717-4B9E-BAA4-2E2B06D6F192}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		EasyTest|Any CPU = EasyTest|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA137DE8-6686-4D84-9432-2EFFF4A12CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA137DE8-6686-4D84-9432-2EFFF4A12CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA137DE8-6686-4D84-9432-2EFFF4A12CAD}.EasyTest|Any CPU.ActiveCfg = Release|Any CPU
+		{CA137DE8-6686-4D84-9432-2EFFF4A12CAD}.EasyTest|Any CPU.Build.0 = Release|Any CPU
+		{CA137DE8-6686-4D84-9432-2EFFF4A12CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA137DE8-6686-4D84-9432-2EFFF4A12CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFACBA3A-CA0D-4F54-B75A-CD7ECCE2D424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFACBA3A-CA0D-4F54-B75A-CD7ECCE2D424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFACBA3A-CA0D-4F54-B75A-CD7ECCE2D424}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFACBA3A-CA0D-4F54-B75A-CD7ECCE2D424}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{FFACBA3A-CA0D-4F54-B75A-CD7ECCE2D424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFACBA3A-CA0D-4F54-B75A-CD7ECCE2D424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC692297-2BB0-405B-84A1-C9F7DA0849A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC692297-2BB0-405B-84A1-C9F7DA0849A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC692297-2BB0-405B-84A1-C9F7DA0849A8}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC692297-2BB0-405B-84A1-C9F7DA0849A8}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{EC692297-2BB0-405B-84A1-C9F7DA0849A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC692297-2BB0-405B-84A1-C9F7DA0849A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC09C1F-8717-4B9E-BAA4-2E2B06D6F192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC09C1F-8717-4B9E-BAA4-2E2B06D6F192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC09C1F-8717-4B9E-BAA4-2E2B06D6F192}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC09C1F-8717-4B9E-BAA4-2E2B06D6F192}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{3AC09C1F-8717-4B9E-BAA4-2E2B06D6F192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC09C1F-8717-4B9E-BAA4-2E2B06D6F192}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F685C60E-6A62-479F-9CD9-9AF118273D0B}
+	EndGlobalSection
+EndGlobal
