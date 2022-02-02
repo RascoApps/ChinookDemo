@@ -1,5 +1,11 @@
 ﻿namespace Chinook.DataStore.SqlServer
 {
+    public partial class ToCustomer : Customer 
+    {
+    }
+    public partial class FromCustomer : Customer
+    {
+    }
     public partial class Customer
     {
         public Customer()

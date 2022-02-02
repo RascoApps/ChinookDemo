@@ -116,7 +116,9 @@ namespace Chinook.DataStore.SqlServer
             modelBuilder.Entity<CustomerShippingRate>(entity =>
             {
                 entity.ToTable("CustomerShippingRate");
-                entity.HasOne(d => d.Customer)
+                entity.HasOne(d => d.FromCustomer)
+                    .WithMany(p => p.ShippingRates);
+                entity.HasOne(d => d.ToCustomer)
                     .WithMany(p => p.ShippingRates);
             });
             modelBuilder.Entity<Employee>(entity =>

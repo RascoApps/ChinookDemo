@@ -86,6 +86,10 @@ namespace Chinook.DataStore.SqlServer.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(60)
@@ -125,6 +129,8 @@ namespace Chinook.DataStore.SqlServer.Migrations
                     b.HasIndex(new[] { "SupportRepId" }, "IFK_CustomerSupportRepId");
 
                     b.ToTable("Customer", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Customer");
                 });
 
             modelBuilder.Entity("Chinook.DataStore.SqlServer.CustomerShippingRate", b =>
@@ -147,9 +153,6 @@ namespace Chinook.DataStore.SqlServer.Migrations
                     b.Property<string>("Currency")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("DeliveryDate")
                         .HasColumnType("datetime2");
 
@@ -164,6 +167,9 @@ namespace Chinook.DataStore.SqlServer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EstDeliveryDays")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FromCustomerCustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("ListCurrency")
@@ -190,6 +196,9 @@ namespace Chinook.DataStore.SqlServer.Migrations
                     b.Property<string>("ShipmentId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ToCustomerCustomerId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -198,7 +207,9 @@ namespace Chinook.DataStore.SqlServer.Migrations
 
                     b.HasKey("CustomerShippingRateId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("FromCustomerCustomerId");
+
+                    b.HasIndex("ToCustomerCustomerId");
 
                     b.HasIndex("WarehouseId");
 
@@ -565,6 +576,20 @@ namespace Chinook.DataStore.SqlServer.Migrations
                     b.ToTable("PlaylistTrack", (string)null);
                 });
 
+            modelBuilder.Entity("Chinook.DataStore.SqlServer.FromCustomer", b =>
+                {
+                    b.HasBaseType("Chinook.DataStore.SqlServer.Customer");
+
+                    b.HasDiscriminator().HasValue("FromCustomer");
+                });
+
+            modelBuilder.Entity("Chinook.DataStore.SqlServer.ToCustomer", b =>
+                {
+                    b.HasBaseType("Chinook.DataStore.SqlServer.Customer");
+
+                    b.HasDiscriminator().HasValue("ToCustomer");
+                });
+
             modelBuilder.Entity("Chinook.DataStore.SqlServer.Album", b =>
                 {
                     b.HasOne("Chinook.DataStore.SqlServer.Artist", "Artist")
@@ -588,15 +613,21 @@ namespace Chinook.DataStore.SqlServer.Migrations
 
             modelBuilder.Entity("Chinook.DataStore.SqlServer.CustomerShippingRate", b =>
                 {
-                    b.HasOne("Chinook.DataStore.SqlServer.Customer", "Customer")
+                    b.HasOne("Chinook.DataStore.SqlServer.FromCustomer", "FromCustomer")
                         .WithMany("ShippingRates")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("FromCustomerCustomerId");
+
+                    b.HasOne("Chinook.DataStore.SqlServer.ToCustomer", "ToCustomer")
+                        .WithMany("ShippingRates")
+                        .HasForeignKey("ToCustomerCustomerId");
 
                     b.HasOne("Chinook.DataStore.SqlServer.Warehouse", null)
                         .WithMany("CustomerShippingRates")
                         .HasForeignKey("WarehouseId");
 
-                    b.Navigation("Customer");
+                    b.Navigation("FromCustomer");
+
+                    b.Navigation("ToCustomer");
                 });
 
             modelBuilder.Entity("Chinook.DataStore.SqlServer.Employee", b =>
@@ -720,8 +751,6 @@ namespace Chinook.DataStore.SqlServer.Migrations
             modelBuilder.Entity("Chinook.DataStore.SqlServer.Customer", b =>
                 {
                     b.Navigation("Invoices");
-
-                    b.Navigation("ShippingRates");
                 });
 
             modelBuilder.Entity("Chinook.DataStore.SqlServer.Employee", b =>
@@ -760,6 +789,16 @@ namespace Chinook.DataStore.SqlServer.Migrations
                     b.Navigation("Invoices");
 
                     b.Navigation("Parcels");
+                });
+
+            modelBuilder.Entity("Chinook.DataStore.SqlServer.FromCustomer", b =>
+                {
+                    b.Navigation("ShippingRates");
+                });
+
+            modelBuilder.Entity("Chinook.DataStore.SqlServer.ToCustomer", b =>
+                {
+                    b.Navigation("ShippingRates");
                 });
 #pragma warning restore 612, 618
         }

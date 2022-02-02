@@ -10,8 +10,12 @@ namespace Chinook.DataStore.SqlServer
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomerShippingRateId { get; init; }
         public string EasyPostRateId { get; init; } = null!;
-        public Customer? Customer { get; init; } = null;
-        public string? ZipCode => Customer?.PostalCode;
+        public ToCustomer? ToCustomer { get; init; } = null;
+        public FromCustomer? FromCustomer { get; init; } = null;
+        [NotMapped]
+        public string? FromZipCode => FromCustomer?.PostalCode;
+        [NotMapped]
+        public string? ToZipCode => ToCustomer?.PostalCode;
         public DateTime? CreatedAt { get; init; }
         public DateTime? UpdatedAt { get; init; }
         public string? Mode { get; init; }
