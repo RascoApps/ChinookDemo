@@ -9,6 +9,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.0" />
     <PackageReference Include="AutoMapper.Extensions.EnumMapping" Version="2.0.1" />
+    <PackageReference Include="DevExpress.ExpressApp.EFCore" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.EFCore" Version="21.2.5" />
     <PackageReference Include="MassTransit" Version="7.3.1" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="6.0.1" />
   </ItemGroup>

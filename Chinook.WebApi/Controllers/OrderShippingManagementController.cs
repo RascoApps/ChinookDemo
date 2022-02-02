@@ -1,12 +1,14 @@
 using Chinook.DataStore.SqlServer;
 using Chinook.Service.Models;
 using MassTransit.Mediator;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chinook.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "Admin")]
     public class OrderShippingManagementController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -19,6 +21,7 @@ namespace Chinook.WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<CustomerShippingRate>> GetShippingRate([FromQuery] int? fromCustomerId, [FromQuery] int? toCustomerId)
         {
+            //Use a Validation Framework
             if (!fromCustomerId.HasValue)
             {
                 throw new ArgumentNullException(nameof(fromCustomerId), "fromCustomerId must be provided");
@@ -34,6 +37,7 @@ namespace Chinook.WebApi.Controllers
                 FromCustomerId = fromCustomerId.Value,
                 ToCustomerId = toCustomerId.Value
             });
+
             return result.Message.ShippingRates;
         }
     }
