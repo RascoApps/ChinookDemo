@@ -30,8 +30,14 @@ namespace Chinook.Service.Consumers
             {
                 throw new NullReferenceException("toCustomerId not found");
             }
-            var customerShippingRates = await _easyPostService.EstimateShipmentCost(fromCustomer, toCustomer);
-            var response = _mapper.Map<CustomerShippingRateResponse>(customerShippingRates);
+            var shippingRates = await _easyPostService.EstimateShipmentCost(fromCustomer, toCustomer);
+            foreach (var shippingRate in shippingRates)
+            {
+                shippingRate.FromCustomer = _mapper.Map<FromCustomer>(fromCustomer);
+                shippingRate.ToCustomer = _mapper.Map<ToCustomer>(fromCustomer);
+            }
+            var response = _mapper.Map<CustomerShippingRateResponse>(shippingRates);
+            await context.Publish(response);
             await context.RespondAsync(response);
         }
     }

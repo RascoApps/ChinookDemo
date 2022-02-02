@@ -11,4 +11,6 @@ public record CustomerShippingRateRequest
 public record CustomerShippingRateResponse
 {
     public IEnumerable<CustomerShippingRate> ShippingRates { get; init; } = new HashSet<CustomerShippingRate>();
+    public int FromCustomerId { get; internal set; }
+    public int ToCustomerId { get; internal set; }
 }

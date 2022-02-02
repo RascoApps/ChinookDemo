@@ -13,7 +13,7 @@ namespace Chinook.DataStore.SqlServer
         {
         }
 
-        public virtual DbSet<CustomerShippingRate> CustomerShippingRate { get; set; } = null!;
+        public virtual DbSet<CustomerShippingRate> CustomerShippingRates { get; set; } = null!;
         public virtual DbSet<Warehouse> Warehouses { get; set; } = null!;
         public virtual DbSet<Album> Albums { get; set; } = null!;
         public virtual DbSet<Artist> Artists { get; set; } = null!;
@@ -25,7 +25,6 @@ namespace Chinook.DataStore.SqlServer
         public virtual DbSet<MediaType> MediaTypes { get; set; } = null!;
         public virtual DbSet<Playlist> Playlists { get; set; } = null!;
         public virtual DbSet<Track> Tracks { get; set; } = null!;
-        public virtual DbSet<CustomerShippingRate> CustomerShippingRates { get; set; } = null!;
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
